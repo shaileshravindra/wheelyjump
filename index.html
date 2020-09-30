@@ -1,0 +1,573 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title></title>
+
+	<style type="text/css">
+		
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Baloo Tammudu 2', cursive;
+
+		}
+
+		.header_3 {
+
+			margin-top: 5px;
+			text-align: center;
+
+		}
+
+		h3 {
+
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.5rem;
+			color: black;
+
+		}
+
+		
+		.main_div {
+
+			width: 100vw;
+			height: 100vh;
+			background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 84%);
+
+		}
+
+
+		.center_div {
+
+			width: 100vw;
+			height: 45vh;
+			border: 0.1rem solid black;
+			position: relative;
+			overflow: hidden;
+			background-color: ghostwhite;
+
+		}
+
+		#final_msg {
+
+
+			position: absolute;
+			font-size: 2rem;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: pop 1s  ;
+		}
+
+		@keyframes pop {
+
+			0%{
+
+				transform: scale(0) translate(-50%, -50%);
+			}
+
+			100% {
+
+				transform: scale(1) translate(-50%, -50%);
+			}
+
+		}
+
+
+		
+		#player {
+
+			position: absolute;
+			color: black;
+			font-size: 2.5rem;
+			bottom: 0px;
+			left: 0px;
+			animation: none ;
+
+			
+		}
+
+
+
+		#obstacle {
+			
+			position: absolute;
+			font-size: 4rem;
+			bottom: 0px;
+			left: 440px;
+			color: red;
+			animation: none;
+
+		}
+
+
+
+		@keyframes block {
+
+			0%{
+				 left: 440px;
+			}
+
+			100% {
+
+				left: -70px;
+
+			}
+
+
+		}
+
+
+		@keyframes jump {
+
+			0%{
+				 
+				bottom: 0px;
+
+			}
+
+			30%{
+				
+
+				bottom: 65px;
+
+			}
+
+			70% {
+
+
+				bottom: 70px;
+			}
+
+			100% {
+
+				bottom: 0px;
+
+			}
+
+
+		}
+
+
+
+		#cld {
+			
+			font-size:48px;
+			position: absolute;
+			color:grey;
+			top: 0;
+			left: 0;
+
+		}
+
+		
+		#cld1 {
+			
+			font-size:48px;
+			position: absolute;
+			color:grey;
+			top: 0;
+			left: 7rem;
+
+		}
+
+
+		#cld2 {
+			
+			font-size:48px;
+			color:grey;
+			position: absolute;
+			top: 0;
+			left: 14rem;
+	
+
+		}
+
+
+		#cld3 {
+			
+			font-size:48px;
+			color:grey;
+			position: absolute;
+			top: 0;
+			left: 21rem;
+
+
+		}
+
+
+		#cld4 {
+			
+			font-size:48px;
+			color:grey;
+			position: absolute;
+			top: 0;
+			left: 28rem;
+
+
+		}
+
+		#score {
+
+			font-weight: bold;
+		}
+
+		#highScore {
+
+			font-weight: bold;
+
+		}
+
+		#level {
+
+			font-weight: bold;
+
+		}
+
+
+
+	button {
+
+ 	 padding: 8px 10px;
+  	 font-size: 15px;
+  	 cursor: pointer;
+  	 text-align: center;
+   	 color: black;
+  	 background-color: lightgrey;
+  	 border-radius: 10px;
+  	 font-weight: bold;
+
+   }
+
+   .button_align {
+
+    display: flex;
+    justify-content: space-between;  
+  	flex-wrap: wrap;
+
+   }
+
+   .footer {
+
+   	background: black;
+   	color: white;
+   	text-align: center;
+   	margin-top: 50px;
+
+   }
+   #jumper {
+
+   	width: 100%;
+   	margin-top: 15px;
+   }
+
+		
+		
+
+
+	</style>
+
+</head>
+<body>
+
+ <div class = "main_div">
+ 	<div class="header_3">
+ 	<h3>Wheely Jump</h3>
+ 	</div>
+ 	<br>
+
+	<b><p id="highScore">Highscore: 0</p><p id="score">Score: 0</p><p id="level">Level: 0</p></b>	
+ 	<div class = "center_div">
+ 		<i class="fa fa-wheelchair-alt" aria-hidden="true" id="player"></i>
+ 		<i class="fa fa-cloud"  id="cld" ></i>
+ 		<i class="fa fa-cloud" id="cld1" ></i>
+ 		<i class="fa fa-cloud" id="cld2" ></i>
+ 		<i class="fa fa-cloud" id="cld3" ></i>
+ 		<i class="fa fa-cloud" id="cld4" ></i>
+ 		<h4 id="final_msg">GAME OVER</h4>
+		<i class="fa fa-ambulance" id="obstacle"></i>
+ 	</div>
+ 	<div class="button_align">
+ 	<button onclick="restart()" id="restart">Restart <i class="fa fa-refresh"></i></button>
+ 	<button onclick="play()" id="play" value="play">Play <i class="fa fa-play"></i></button>
+	<button onclick="deleteData()" id="resetScore">Reset <i class="fa fa-power-off"></i></button>
+	</div>
+	<button onclick="jump()" id="jumper">Jump<i class="fa fa-sort-asc"></i></button>
+
+
+
+ </div>
+
+ 	
+
+
+
+
+
+ <script>
+
+document.getElementById("final_msg").style.display ="none";
+document.getElementById("highScore").innerHTML = "Highscore: " + 0;
+document.getElementById("level").innerHTML = "Level: " + 0;
+var score = 0;
+var up = 0;
+var ded = "no";
+var player = document.getElementById("player");
+var obstacle = document.getElementById("obstacle");
+obstacle.style.animation = "none";
+
+var button = document.getElementById("play");
+
+
+setInterval(checkPlayer, 10);
+
+
+
+
+
+
+
+
+function jump(){
+if(player.style.animation != "jump 800ms"){
+
+var jump = new Audio("jump.wav");
+jump.play();
+//obstacle.style.display = "block";
+player.style.animation = "jump 800ms";
+setTimeout(remove, 500);
+
+}
+}
+
+function remove(){
+
+player.style.animation = "none";
+}
+
+
+function checkPlayer(){
+  						   	
+
+var charTop = parseInt(window.getComputedStyle(player).getPropertyValue("bottom"));
+var ambLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+
+
+
+if(ambLeft < 30 && ambLeft > -70 && (charTop == 0 || charTop < 58 )){
+
+dead();
+}
+
+else{
+
+if(ded=="no" && button.value == "pause"){
+
+
+
+score++;
+document.getElementById("score").innerHTML = "Score: " + score;
+
+// very easy level
+if(score > 0 && score < 1000){
+
+obstacle.style.animation = "none";
+
+document.getElementById("obstacle").style.animation = "block 1s infinite linear";
+
+if(up == 0){
+
+document.getElementById("level").innerHTML = "Level: " + up;
+
+}
+}
+
+// easy 
+if(score > 1000 && score < 5000){
+
+if(up == 0){
+up++;
+document.getElementById("level").innerHTML = "Level: " + up;
+var level = new Audio("levelUp.wav");
+level.play();
+
+obstacle.style.animation = "none";
+document.getElementById("obstacle").style.animation = "block 995ms infinite linear";
+}
+}
+
+//easy 
+if(score > 5000 && score < 7000){
+
+if(up == 1){
+up++;
+document.getElementById("level").innerHTML = "Level: " + up;
+var level = new Audio("levelUp.wav");
+level.play();
+
+obstacle.style.animation = "none";
+document.getElementById("obstacle").style.animation = "block 985ms infinite linear";
+}
+}
+
+// medium level of difficulty
+if(score > 7000 && score < 9000){
+
+if(up == 2){
+up++;
+document.getElementById("level").innerHTML = "Level: " + up;
+var level = new Audio("levelUp.wav");
+level.play();
+
+obstacle.style.animation = "none";
+document.getElementById("obstacle").style.animation = "block 970ms infinite linear";
+}
+}
+
+// difficult 
+
+if(score > 9000 && score < 10000){
+
+if(up == 3){
+up++;
+document.getElementById("level").innerHTML = "Level: " + up;
+var level = new Audio("levelUp.wav");
+level.play();
+
+obstacle.style.animation = "none";
+document.getElementById("obstacle").style.animation = "block 960ms infinite linear";
+}
+}
+
+//this is the mother of all levels :P
+if(score > 10000 && score < 11000){
+
+if(up == 4){
+document.getElementById("level").innerHTML = "Level: " + up;
+var level = new Audio("levelUp.wav");
+level.play();
+
+obstacle.style.animation = "none";
+document.getElementById("obstacle").style.animation = "block 900ms infinite linear";
+}
+}
+
+}
+}
+}
+
+
+
+
+
+//when the person crashes this dead function gets called
+function dead(){
+
+	var death = new Audio("death.wav");
+	death.play();
+
+
+
+	document.getElementById("final_msg").style.display ="block";
+	document.getElementById("score").innerHTML = "Score: " + score;
+	ded = "yes";
+	document.getElementById("restart").style.display = "block";
+	obstacle.style.display = "none";
+	document.getElementById("resetScore").style.display = "block";
+
+	if(localStorage.highScore){
+		if(score>localStorage.highScore){
+				localStorage.highScore = score;
+		}
+	}
+
+	else{
+		localStorage.setItem("highScore", score);
+	}
+	
+		document.getElementById("highScore").innerHTML = "Highscore: " + localStorage.highScore;
+
+}
+
+
+function restart(){
+
+up = 1;
+score = 0;
+document.getElementById("final_msg").style.display ="none";
+document.getElementById("level").innerHTML = "Level: " + up;
+document.getElementById("score").innerHTML = "Score: " + score;
+
+var button = document.getElementById("play");
+
+    	if (button.value =="play") {
+
+    		
+			obstacle.style.display = "none";
+		}
+
+		if (button.value == "pause" ) {
+
+			obstacle.style.display = "block";
+			document.getElementById("final_msg").style.display ="block";
+			ded = "no";
+
+		}
+
+
+}
+
+
+function deleteData(){
+
+localStorage.removeItem("highScore");
+document.getElementById("highScore").innerHTML = "Highscore: " + 0;
+
+}
+
+
+// this functionality to prevent start of game right after loading the page
+function play() {
+
+		var button = document.getElementById("play");
+    	
+    	
+    	if (button.value =="play") {
+
+    	 button.value = "pause";
+    	 button.innerHTML = "Pause" +' '+ `<i class="fa fa-pause"></i>`; 
+    	 document.getElementById("level").innerHTML = "Level: " + up;
+		 document.getElementById("score").innerHTML = "Score: " + score;
+		 obstacle.style.display = "block";
+		
+		 
+
+    	}
+
+    	else {
+
+    	button.value = "play";
+    	button.innerHTML = "Play" +' '+ `<i class="fa fa-play"></i>`;
+    	document.getElementById("level").innerHTML = "Level: " + up;
+		document.getElementById("score").innerHTML = "Score: " + score;
+
+		obstacle.style.display = "none";
+		
+		
+		}
+		
+
+}
+
+
+</script>
+
+</body>
+
+</html>
