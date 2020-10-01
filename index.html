@@ -338,12 +338,12 @@ setInterval(checkPlayer, 10);
 
 
 function jump(){
-if(player.style.animation != "jump 850ms"){
+if(player.style.animation != "jump 600ms"){
 
 var jump = new Audio("jump.wav");
 jump.play();
 //obstacle.style.display = "block";
-player.style.animation = "jump 850ms";
+player.style.animation = "jump 600ms";
 setTimeout(remove, 500);
 
 }
@@ -382,7 +382,7 @@ if(score > 0 && score < 1000){
 
 obstacle.style.animation = "none";
 
-document.getElementById("obstacle").style.animation = "block 1.3s infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.2s infinite linear";
 
 if(up == 0){
 
@@ -401,7 +401,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 1.2ms infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.2s infinite linear";
 }
 }
 
@@ -415,7 +415,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 1ms infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.1s infinite linear";
 }
 }
 
@@ -429,7 +429,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 995ms infinite linear";
+document.getElementById("obstacle").style.animation = "block 1s infinite linear";
 }
 }
 
