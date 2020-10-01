@@ -266,7 +266,7 @@
    #jumper {
 
    	width: 100%;
-   	margin-top: 15px;
+   	height: 10%;
    }
 
 		
@@ -501,9 +501,16 @@ function dead(){
 
 function restart(){
 
+//removes the game over message
+if(document.getElementById("final_msg").style.display ="block") {
+	
+	document.getElementById("final_msg").style.display ="none";
+
+}
+
 up = 1;
 score = 0;
-document.getElementById("final_msg").style.display ="none";
+
 document.getElementById("level").innerHTML = "Level: " + up;
 document.getElementById("score").innerHTML = "Score: " + score;
 
@@ -511,14 +518,17 @@ var button = document.getElementById("play");
 
     	if (button.value =="play") {
 
-    		
-			obstacle.style.display = "none";
+    		button.value = "pause";
+    		button.innerHTML = "Pause" +' '+ `<i class="fa fa-pause"></i>`; 
+			obstacle.style.display = "object";
+			ded = "no";
 		}
 
 		if (button.value == "pause" ) {
 
-			obstacle.style.display = "block";
-			document.getElementById("final_msg").style.display ="block";
+			obstacle.style.display = "none";
+			button.value = "play";
+    		button.innerHTML = "Play" +' '+ `<i class="fa fa-play"></i>`;
 			ded = "no";
 
 		}
@@ -541,29 +551,33 @@ function play() {
 		var button = document.getElementById("play");
     	
     	
-    	if (button.value =="play") {
+		if(document.getElementById("final_msg").style.display  != "block" ) {
 
-    	 button.value = "pause";
-    	 button.innerHTML = "Pause" +' '+ `<i class="fa fa-pause"></i>`; 
-    	 document.getElementById("level").innerHTML = "Level: " + up;
-		 document.getElementById("score").innerHTML = "Score: " + score;
-		 obstacle.style.display = "block";
+    		if (button.value =="play") {
+
+    	 		button.value = "pause";
+    	 		button.innerHTML = "Pause" +' '+ `<i class="fa fa-pause"></i>`; 
+    	 		document.getElementById("level").innerHTML = "Level: " + up;
+		 		document.getElementById("score").innerHTML = "Score: " + score;
+				obstacle.style.display = "block";
 		
 		 
 
-    	}
+    		}
 
-    	else {
+    		else {
 
-    	button.value = "play";
-    	button.innerHTML = "Play" +' '+ `<i class="fa fa-play"></i>`;
-    	document.getElementById("level").innerHTML = "Level: " + up;
-		document.getElementById("score").innerHTML = "Score: " + score;
 
-		obstacle.style.display = "none";
+    			button.value = "play";
+    			button.innerHTML = "Play" +' '+ `<i class="fa fa-play"></i>`;
+    			document.getElementById("level").innerHTML = "Level: " + up;
+				document.getElementById("score").innerHTML = "Score: " + score;
+				obstacle.style.display = "none";
 		
 		
-		}
+			}
+
+		}		
 		
 
 }
