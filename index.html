@@ -156,64 +156,18 @@
 
 		}
 
+		#cloud {
 
-
-		#cld {
-			
-			font-size:48px;
-			position: absolute;
-			color:grey;
-			top: 0;
-			left: 0;
-
-		}
-
-		
-		#cld1 {
-			
-			font-size:48px;
-			position: absolute;
-			color:grey;
-			top: 0;
-			left: 7rem;
-
-		}
-
-
-		#cld2 {
-			
-			font-size:48px;
-			color:grey;
-			position: absolute;
-			top: 0;
-			left: 14rem;
-	
-
-		}
-
-
-		#cld3 {
-			
-			font-size:48px;
-			color:grey;
-			position: absolute;
-			top: 0;
-			left: 21rem;
+			display: flex;
+			justify-content: space-between;  
+  			flex-wrap: wrap;
+  			color: darkgray;
+  			font-size: 4rem;
 
 
 		}
 
 
-		#cld4 {
-			
-			font-size:48px;
-			color:grey;
-			position: absolute;
-			top: 0;
-			left: 28rem;
-
-
-		}
 
 		#score {
 
@@ -267,9 +221,222 @@
 
    	width: 100%;
    	height: 10%;
+   	margin-top: 1rem;
    }
 
+	@media (min-width: 900px) {
+
+		.header_3 {
+
+			text-align: center;
+
+		}
+
+		h3 {
+
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.2rem;
+
+		}
+		h4 {
+
+			margin-top: 0px;
+			text-align: center;
+		}
 		
+		.main_div {
+
+			width: 100vw;
+			height: 100vh;
+			background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 84%);
+
+		}
+
+
+		.center_div {
+
+			width: 100vw;
+			height: 45vh;
+			border: 0.1rem solid black;
+			position: relative;
+			overflow: hidden;
+			background-color: ghostwhite;
+
+		}
+
+		#final_msg {
+
+
+			position: absolute;
+			font-size: 2rem;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: pop 1s  ;
+		}
+
+		@keyframes pop {
+
+			0%{
+
+				transform: scale(0) translate(-50%, -50%);
+			}
+
+			100% {
+
+				transform: scale(1) translate(-50%, -50%);
+			}
+
+		}
+
+
+		
+		#player {
+
+			position: absolute;
+			color: black;
+			font-size: 2.5rem;
+			bottom: 0px;
+			left: 0px;
+			animation: none ;
+
+			
+		}
+
+
+
+		#obstacle {
+			
+			position: absolute;
+			font-size: 4rem;
+			bottom: 0px;
+			left: 1700px;
+			color: red;
+			animation: none;
+
+		}
+
+
+
+		@keyframes block {
+
+			0%{
+				 left: 1700px;
+			}
+
+			100% {
+
+				left: -70px;
+
+			}
+
+
+		}
+
+
+		@keyframes jump {
+
+			0%{
+				 
+				bottom: 0px;
+
+			}
+
+			30%{
+				
+
+				bottom: 65px;
+
+			}
+
+			70% {
+
+
+				bottom: 70px;
+			}
+
+			100% {
+
+				bottom: 0px;
+
+			}
+
+
+		}
+
+		#cloud {
+
+			display: flex;
+			justify-content: space-between;  
+  			flex-wrap: wrap;
+  			color: darkgray;
+  			font-size: 4rem;
+
+
+		}
+
+		
+
+		#score {
+
+			font-weight: bold;
+		}
+
+		#highScore {
+
+			font-weight: bold;
+
+		}
+
+		#level {
+
+			font-weight: bold;
+
+		}
+
+
+
+	button {
+
+ 	 padding: 8px 10px;
+  	 font-size: 15px;
+  	 cursor: pointer;
+  	 text-align: center;
+   	 color: black;
+  	 background-color: lightgrey;
+  	 border-radius: 10px;
+  	 font-weight: bold;
+
+   }
+
+   .button_align {
+
+    display: flex;
+    justify-content: space-between;  
+  	flex-wrap: wrap;
+
+   }
+
+   .footer {
+
+   	background: black;
+   	color: white;
+   	text-align: center;
+   	margin-top: 50px;
+
+   }
+   #jumper {
+
+   	width: 100%;
+   	height: 10%;
+   	margin-top: 1rem;
+   }
+
+
+
+
+	}	
 		
 
 
@@ -282,17 +449,18 @@
  	 <div class="header_3">
  	<h3>Wheely Jump</h3>
  	</div>
- 	<h4><i>mobile version</i></h4>
  	<br>
 
 	<b><p id="highScore">Highscore: 0</p><p id="score">Score: 0</p><p id="level">Level: 0</p></b>	
  	<div class = "center_div">
  		<i class="fa fa-wheelchair-alt" aria-hidden="true" id="player"></i>
- 		<i class="fa fa-cloud"  id="cld" ></i>
+ 		<div id="cloud">
+ 		<i class="fa fa-cloud" id="cld" ></i>
  		<i class="fa fa-cloud" id="cld1" ></i>
  		<i class="fa fa-cloud" id="cld2" ></i>
  		<i class="fa fa-cloud" id="cld3" ></i>
  		<i class="fa fa-cloud" id="cld4" ></i>
+ 	    </div>
  		<h4 id="final_msg">GAME OVER</h4>
 		<i class="fa fa-ambulance" id="obstacle"></i>
  	</div>
@@ -338,13 +506,13 @@ setInterval(checkPlayer, 10);
 
 
 function jump(){
-if(player.style.animation != "jump 600ms"){
+if(player.style.animation != "jump 900ms"){
 
 var jump = new Audio("jump.wav");
 jump.play();
 //obstacle.style.display = "block";
-player.style.animation = "jump 600ms";
-setTimeout(remove, 500);
+player.style.animation = "jump 900ms";
+setTimeout(remove, 1400);
 
 }
 }
@@ -382,7 +550,7 @@ if(score > 0 && score < 1000){
 
 obstacle.style.animation = "none";
 
-document.getElementById("obstacle").style.animation = "block 1.2s infinite linear";
+document.getElementById("obstacle").style.animation = "block 2.1s infinite linear";
 
 if(up == 0){
 
@@ -401,7 +569,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 1.2s infinite linear";
+document.getElementById("obstacle").style.animation = "block 2s infinite linear";
 }
 }
 
@@ -415,7 +583,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 1.1s infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.8s infinite linear";
 }
 }
 
@@ -429,7 +597,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 1s infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.5s infinite linear";
 }
 }
 
@@ -444,7 +612,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 990ms infinite linear";
+document.getElementById("obstacle").style.animation = "block 1.2s infinite linear";
 }
 }
 
@@ -457,7 +625,7 @@ var level = new Audio("levelUp.wav");
 level.play();
 
 obstacle.style.animation = "none";
-document.getElementById("obstacle").style.animation = "block 980ms infinite linear";
+document.getElementById("obstacle").style.animation = "block 1s infinite linear";
 }
 }
 
