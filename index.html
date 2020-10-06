@@ -224,7 +224,7 @@
    	margin-top: 1rem;
    }
 
-	@media (min-width: 900px) {
+	@media (min-width: 900px){
 
 		.header_3 {
 
@@ -433,10 +433,214 @@
    	margin-top: 1rem;
    }
 
+}
+
+@media (orientation: landscape) {
+
+	.header_3 {
+
+			text-align: center;
+
+		}
+
+		h3 {
+
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1rem;
+
+		}
+		h4 {
+
+			margin-top: 0px;
+			text-align: center;
+		}
+		
+		.main_div {
+
+			width: 100vw;
+			height: 100vh;
+			background-color: lightblue;
+
+		}
+
+
+		.center_div {
+
+			width: 100vw;
+			height: 55vh;
+			border: 0.1rem solid black;
+			position: relative;
+			overflow: hidden;
+			background-color: ghostwhite;
+
+		}
+
+		#final_msg {
+
+
+			position: absolute;
+			font-size: 2rem;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: pop 1s  ;
+		}
+
+		@keyframes pop {
+
+			0%{
+
+				transform: scale(0) translate(-50%, -50%);
+			}
+
+			100% {
+
+				transform: scale(1) translate(-50%, -50%);
+			}
+
+		}
+
+
+		
+		#player {
+
+			position: absolute;
+			color: black;
+			font-size: 2.5rem;
+			bottom: 0px;
+			left: 0px;
+			animation: none ;
+
+			
+		}
 
 
 
-	}	
+		#obstacle {
+			
+			position: absolute;
+			font-size: 4rem;
+			bottom: 0px;
+			left: 1700px;
+			color: red;
+			animation: none;
+
+		}
+
+
+
+		@keyframes block {
+
+			0%{
+				 left: 1700px;
+			}
+
+			100% {
+
+				left: -70px;
+
+			}
+
+
+		}
+
+
+		@keyframes jump {
+
+			0%{
+				 
+				bottom: 0px;
+
+			}
+
+			30%{
+				
+
+				bottom: 65px;
+
+			}
+
+			70% {
+
+
+				bottom: 70px;
+			}
+
+			100% {
+
+				bottom: 0px;
+
+			}
+
+
+		}
+
+		#cloud {
+
+			display: flex;
+			justify-content: space-between;  
+  			flex-wrap: wrap;
+  			color: darkgray;
+  			font-size: 3.5rem;
+
+
+		}
+
+		
+
+		#score {
+
+			font-weight: bold;
+		}
+
+		#highScore {
+
+			font-weight: bold;
+
+		}
+
+		#level {
+
+			font-weight: bold;
+
+		}
+
+
+
+	button {
+
+ 	 padding: 8px 10px;
+  	 font-size: 10px;
+  	 cursor: pointer;
+  	 text-align: center;
+   	 color: black;
+  	 background-color: lightgrey;
+  	 border-radius: 10px;
+  	 font-weight: bold;
+
+   }
+
+   .button_align {
+
+    display: flex;
+    justify-content: space-between;  
+  	flex-wrap: wrap;
+
+   }
+
+   #jumper {
+
+   	width: 100%;
+   	height: 8%;
+   	margin-top: 0.5rem;
+   }
+
+
+
+
+}
+		
 		
 
 
